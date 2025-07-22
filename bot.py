@@ -29,10 +29,15 @@ WALLET_CHECKSUM_ADDRESS = w3.to_checksum_address(WALLET_ADDRESS)
 try:
     with open("PancakeRouterABI.json", "r") as f:
         ROUTER_ABI = json.load(f)
-
+    
     with open("PancakeFactoryABI.json", "r") as f:
         FACTORY_ABI = json.load(f)
-        
+
+# ОСЬ ЦЯ ЧАСТИНА БУЛА ВІДСУТНЯ
+except FileNotFoundError as e:
+    print(Fore.RED + f"Помилка: Не знайдено ABI файл: {e.filename}")
+    exit()
+
 # --- 3. НАЛАШТУВАННЯ КОНТРАКТІВ І АДРЕС ---
 ROUTER_ADDR = os.getenv("ROUTER_ADDR")
 WBNB_ADDR = os.getenv("WBNB_ADDR")
