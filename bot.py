@@ -282,7 +282,7 @@ def handle_event(event):
 def main():
     """Головна функція, яка запускає бота."""
     print(Fore.YELLOW + "Запуск бота... Очікування нових пар на PancakeSwap...")
-    event_filter = factory.events.PairCreated.create_filter(argument_filters={})
+    event_filter = factory.events.PairCreated.create_filter(from_block='latest')
 
     
     while True:
