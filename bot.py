@@ -106,7 +106,7 @@ def buy_token(token_address):
         })
 
         signed_tx = w3.eth.account.sign_transaction(tx, private_key=PRIVATE_KEY)
-        tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+        tx_hash = w3.eth.send_raw_transaction(signed_tx.raw)
         print(Fore.YELLOW + f"Транзакція відправлена, хеш: {w3.to_hex(tx_hash)}")
         
         receipt = w3.eth.wait_for_transaction_receipt(tx_hash, timeout=300)
@@ -139,7 +139,7 @@ def sell_token(token_address):
             'nonce': w3.eth.get_transaction_count(WALLET_CHECKSUM_ADDRESS),
         })
         signed_approve_tx = w3.eth.account.sign_transaction(approve_tx, private_key=PRIVATE_KEY)
-        approve_tx_hash = w3.eth.send_raw_transaction(signed_approve_tx.rawTransaction)
+        approve_tx_hash = w3.eth.send_raw_transaction(signed_approve_tx.raw)
         print(Fore.YELLOW + f"Транзакція схвалення відправлена, хеш: {w3.to_hex(approve_tx_hash)}")
         w3.eth.wait_for_transaction_receipt(approve_tx_hash, timeout=300)
         print(Fore.GREEN + "Токен успішно схвалено для продажу.")
@@ -158,7 +158,7 @@ def sell_token(token_address):
             'nonce': w3.eth.get_transaction_count(WALLET_CHECKSUM_ADDRESS),
         })
         signed_sell_tx = w3.eth.account.sign_transaction(sell_tx, private_key=PRIVATE_KEY)
-        sell_tx_hash = w3.eth.send_raw_transaction(signed_sell_tx.rawTransaction)
+        sell_tx_hash = w3.eth.send_raw_transaction(signed_sell_tx.raw)
         print(Fore.YELLOW + f"Транзакція продажу відправлена, хеш: {w3.to_hex(sell_tx_hash)}")
         
         receipt = w3.eth.wait_for_transaction_receipt(sell_tx_hash, timeout=300)
