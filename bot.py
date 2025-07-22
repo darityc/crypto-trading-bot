@@ -29,7 +29,8 @@ WALLET_CHECKSUM_ADDRESS = w3.to_checksum_address(WALLET_ADDRESS)
 try:
     with open("PancakeRouterABI.json", "r") as f:
         ROUTER_ABI = json.load(f)
-    with open("PancakeFactoryABI.json", "r") as f:-20 (потрібен для approve і balanceOf)
+    # ЦЕ ПРАВИЛЬНО:
+    with open("PancakeFactoryABI.json", "r") as f:
 TOKEN_ABI = json.loads('[{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}, {"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]')
 
 # --- 3. НАЛАШТУВАННЯ КОНТРАКТІВ І АДРЕС ---
